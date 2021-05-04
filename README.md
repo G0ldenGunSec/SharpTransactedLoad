@@ -9,8 +9,9 @@ The repo consists of two projects: SharpTransactedLoad (STL) and SharperCradle. 
 ### SharpTransactedLoad
 This project builds as a DLL, and as a result it isnt something that can be directly ran.  Rather, once this is built you can add it as a reference in another project and use it by calling "STL.TransactedAssembly.Load(byte[])"
 STL uses EasyHook for hooking functions.  Within the project there are currently two required EasyHook DLLs:
-  - **EasyHook.dll**: sits in the SharpTransactedLoad/SharpTransactedLoad/ folder.  A managed DLL and handles communications with the second (unmanaged) EasyHook dll.
-  - **EasyHook64.dll**: sits in the SharpTransactedLoad/SharpTransactedLoad/Costura64 folder.  An unmanaged DLL, and handles the actual hooking functions.
+  - **EasyHook.dll**: sits in the SharpTransactedLoad/SharpTransactedLoad/ folder.  This is a managed DLL and handles communications with the second (unmanaged) EasyHook dll.
+  - **EasyHook64.dll**: sits in the SharpTransactedLoad/SharpTransactedLoad/Costura64 folder.  This is an unmanaged DLL, and handles the actual hooking functions.
+
 Both of these DLL's were taken straight from EasyHook, but I definitely understand folks hesitancy to blindly trust pre-compiled code.  If you opt for the more opsec route, the original DLLs can be pulled directly from EasyHook and swapped for the ones currently in the project, just make sure names align.  Also, when browsing the project you may notice the Costura32 folder does not have anything in it.  If you opt to build as x86, I would drop the DLL in there.
 
 **Build instructions:**
