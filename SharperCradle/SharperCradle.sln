@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharperCradle", "SharperCradle\SharperCradle.csproj", "{79520F70-EF77-4E03-BF85-1F8AB125775F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79520F70-EF77-4E03-BF85-1F8AB125775F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79520F70-EF77-4E03-BF85-1F8AB125775F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79520F70-EF77-4E03-BF85-1F8AB125775F}.Debug|x64.ActiveCfg = Debug|x64
+		{79520F70-EF77-4E03-BF85-1F8AB125775F}.Debug|x64.Build.0 = Debug|x64
+		{79520F70-EF77-4E03-BF85-1F8AB125775F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79520F70-EF77-4E03-BF85-1F8AB125775F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79520F70-EF77-4E03-BF85-1F8AB125775F}.Release|x64.ActiveCfg = Release|x64
+		{79520F70-EF77-4E03-BF85-1F8AB125775F}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E3E18FD-F6E5-457B-A0E3-B35BAF7EDC12}
+	EndGlobalSection
+EndGlobal
