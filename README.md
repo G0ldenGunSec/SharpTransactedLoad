@@ -1,6 +1,8 @@
 # SharpTransactedLoad
 Load .net assemblies from memory while having them appear to be loaded from an on-disk location. Bypasses AMSI and expands the number of methods available for use in loading arbitrary assemblies while still avoiding dropping files to disk - some of which provide additional functionality over the traditional Assembly.Load call.  Currently built for .net 4.5, but should be compatible with other versions.
 
+blog covering how the code works: https://blog.redxorblue.com/2021/05/assemblylie-using-transactional-ntfs.html
+
 ## Building and Using
 **Note**: Testing was done with an x64 build, and as a result I would recommend building the project as x64. This still allows you to reflectively load both x86 and x64 assemblies from memory.  Rather, this setting just controls the architecture of the dll itself. Although "Any CPU" appears to function as intended as well, I have no clue if any weird behavior would be exhibited when attempting to inject into an x86 process etc.
 
